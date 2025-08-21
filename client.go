@@ -8,7 +8,6 @@ import (
 	"github.com/redis/go-redis/extra/redisprometheus/v9"
 	"github.com/redis/go-redis/v9"
 	"github.com/testbook/tbredis/hooks"
-	"github.com/testbook/tbredis/tracing"
 )
 
 type Config struct {
@@ -47,7 +46,6 @@ func Init(conf Config) {
 	collector := redisprometheus.NewCollector(conf.Service, conf.SubService, c)
 	prometheus.MustRegister(collector)
 	c.ClusterClient.AddHook(hooks.NewHook())
-	_ = tracing.InstrumentTracing(c.ClusterClient, tracing.WithDBStatement(true))
 }
 
 func InitClient(conf Config) {
