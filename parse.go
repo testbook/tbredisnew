@@ -1,4 +1,4 @@
-package tbredis
+package tbredisnew
 
 // This code is forked from github.com/gomodule/tbredis/redis repo reply.go file
 

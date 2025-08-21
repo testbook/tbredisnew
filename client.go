@@ -1,4 +1,4 @@
-package tbredis
+package tbredisnew
 
 import (
 	"errors"
