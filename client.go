@@ -4,10 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/redis/go-redis/extra/redisprometheus/v9"
 	"github.com/redis/go-redis/v9"
-	"github.com/testbook/tbredis/hooks"
 )
 
 type Config struct {
@@ -43,9 +40,6 @@ func Init(conf Config) {
 	config = conf
 	c = new(clusterClient)
 	c.ClusterClient = redis.NewClusterClient(conf.ClusterOptions)
-	collector := redisprometheus.NewCollector(conf.Service, conf.SubService, c)
-	prometheus.MustRegister(collector)
-	c.ClusterClient.AddHook(hooks.NewHook())
 }
 
 func InitClient(conf Config) {
